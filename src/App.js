@@ -16,7 +16,11 @@ class App extends Component {
   };
 
   addNewContact = ({ name, number }) => {
-    if (this.state.contacts.some((contact) => contact.name === name)) {
+    if (
+      this.state.contacts.some(
+        (contact) => contact.name.toLowerCase() === name.toLowerCase()
+      )
+    ) {
       alert(`${name} is already in contacts.`);
       return;
     }
@@ -38,7 +42,7 @@ class App extends Component {
     );
 
   handleChange = (event) => {
-    this.setState({ [event.target.name]: event.target.value });
+    this.setState({ [{ event }.target.name]: { event }.target.value });
   };
   deleteContact = (id) => {
     this.setState((prevState) => ({
